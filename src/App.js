@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ColorChanger from "./Components/UI/Screens/ColorChanger";
+import LoginScreen from "./Components/UI/Screens/LoginScreen";
+import ProfileScreen from "./Components/UI/Screens/ProfileScreen";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './Components/UI/styles/App.css'
+import { useSelector } from "react-redux";
+const App = () => {
+
+    const selector = useSelector(state => state.theme.value.theme)
+
+    // console.log(selector);
+    return(
+        <div style={{ background: selector }}>
+            <h1>Hi!</h1>
+            <ProfileScreen/>
+            <LoginScreen/>
+            <ColorChanger/>
+        </div>
+    )
 }
 
-export default App;
+export default App
